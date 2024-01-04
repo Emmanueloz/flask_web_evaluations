@@ -1,0 +1,17 @@
+{% extends "base.jinja" %}
+
+{% block content %}
+<h1>{{title}}</h1>
+<form action="" method="post">
+    {{form.csrf_token}}
+    <fieldset>
+        <legend>{{form.username.label}}</legend>
+        {{form.username}}
+    </fieldset>
+    <fieldset>
+        <legend>{{form.password.label}}</legend>
+        {{form.password}}
+    </fieldset>
+    <button type="submit">Enviar</button>
+</form>
+{% endblock %}
