@@ -2,7 +2,7 @@
 from .auth import auth_bp
 
 from flask import Blueprint, render_template
-from flask_login import login_required
+from flask_login import login_required, current_user
 
 index_bp = Blueprint('IndexRoute', __name__)
 

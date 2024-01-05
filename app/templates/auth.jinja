@@ -1,4 +1,11 @@
 {% extends "base.jinja" %}
+{% from "_navbar.jinja" import navbar %}
+
+
+{% block header %}
+{{ super() }}
+{{ navbar(current_user,"login") }}
+{% endblock header %}
 
 {% block content %}
 <h1>{{title}}</h1>

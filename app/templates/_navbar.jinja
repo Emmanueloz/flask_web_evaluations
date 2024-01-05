@@ -1,0 +1,13 @@
+{% macro navbar(current_user,page) %}
+<nav>
+    <ul>
+        {% if current_user.is_authenticated %}
+        <li class="{% if page == 'home' %}active{% endif %}">Welcome, {{ current_user.id | capitalize }}</li>
+        <li class="{% if page == 'home' %}active{% endif %}"><a href="/logout">Logout</a></li>
+        {% else %}
+        <li class="{% if page == 'signup' %}active{% endif %}"><a href="/signup">Signup</a></li>
+        <li class="{% if page == 'login' %}active{% endif %}"><a href="/login">Login</a></li>
+        {% endif %}
+    </ul>
+</nav>
+{% endmacro %}

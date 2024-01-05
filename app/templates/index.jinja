@@ -1,8 +1,14 @@
 {% extends "base.jinja" %}
+{% from "_navbar.jinja" import navbar %}
 
 {% block title %}
 Welcome to the home page
 {% endblock title %}
+
+{% block header %}
+{{ super() }}
+{{ navbar(current_user,"home") }}
+{% endblock header %}
 
 {% block content %}
 <h1>Home</h1>
