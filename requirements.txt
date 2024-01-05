@@ -3,3 +3,4 @@ Flask-Login
 requests
 python-dotenv
 Flask-WTF
+Flask-Cors
