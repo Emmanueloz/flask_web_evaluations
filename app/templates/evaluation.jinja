@@ -1,5 +1,5 @@
 {% extends "base.jinja" %}
-{% from "_navbar.jinja" import navbar %}
+{% from "macros/_navbar.jinja" import navbar %}
 
 {% block title %}Evaluaciones{% endblock %}
 
@@ -10,4 +10,15 @@
 {% block content %}
 <h1>Evaluaciones</h1>
 <a href="{{url_for('EvaluationRoute.get_add_evaluation')}}">Agregar</a>
+
+<section id="containerEvaluation">
+
+</section>
 {% endblock %}
+
+{% block scripts %}
+{{ super() }}
+<script type="module" src="{{url_for('static', filename='js/services/evaluation.js')}}"></script>
+<script type="module" src="{{url_for('static', filename='js/customElements.js')}}"></script>
+<script type="module" src="{{url_for('static', filename='js/evaluation.js')}}"></script>
+{% endblock scripts %}

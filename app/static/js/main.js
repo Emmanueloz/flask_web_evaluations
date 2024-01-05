@@ -4,8 +4,6 @@ import { generateEvaluation, evaluation_json } from "./generateEvaluation.js";
 import { id, selectIdTeacher } from "./elements.js";
 import { addEvaluation, getAllEvaluation } from "./services/evaluation.js";
 
-getAllEvaluation();
-
 import {
   titleValue,
   listQuestion,
