@@ -1,0 +1,12 @@
+{% extends "base.jinja" %}
+{% from "_navbar.jinja" import navbar %}
+
+{% block title %}Evaluaciones{% endblock %}
+
+{% block header %}
+{{ super() }}
+{{ navbar(current_user,"evaluation") }}
+{% endblock header %}
+{% block content %}
+<h1>Evaluaciones</h1>
+{% endblock %}

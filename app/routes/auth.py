@@ -62,8 +62,13 @@ def get_logout():
 
 @auth_bp.get('/signup')
 def get_signup():
-    # Lógica para el registro de usuarios
-    pass
+    if current_user.is_authenticated:
+        return redirect(url_for('IndexRoute.index'))
+
+    user_form = UserLogin()
+    context = {'form': user_form, 'title': 'Signup'}
+
+    return render_template('auth.jinja', **context)
 
 
 @auth_bp.post('/signup')
