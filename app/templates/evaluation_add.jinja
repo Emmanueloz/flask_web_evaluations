@@ -1,46 +1,44 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends "base.jinja" %}
+{% from "_navbar.jinja" import navbar %}
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Evaluación docente</title>
-  <link rel="stylesheet" href="{{url_for('static',filename='/css/Global.css')}}">
-  <link rel="stylesheet" href="{{url_for('static',filename='/css/style.css')}}" />
-</head>
+{% block title %}
+Evaluación docente
+{% endblock title %}
 
-<body>
-  <header>
-    <h1>Editor evaluaciones docentes</h1>
-  </header>
-  <main>
-    <article id="questionArticle">
+{% block header %}
+{{ super() }}
+{{ navbar(current_user,"") }}
+{% endblock header %}
 
-      <section id="dataEvaluation">
-        <input type="hidden" id="id" name="id" value="">
-        <input type="text" id="title" value="Titulo" placeholder="Titulo">
-      </section>
-      <section id="ListQuestion">
-        <question-editor></question-editor>
-      </section>
-    </article>
-    <article id="container-btn">
-      <button class="btn" id="btnSave" type="button">Guardar</button>
-      <button class="btn" id="btnAddQuestion" type="button">Agregar</button>
-    </article>
-  </main>
+{% block content %}
+<main>
+  <article id="questionArticle">
 
-  <script type="module" src="{{url_for('static',filename='/js/context/contextListQuestion.js')}}"></script>
-  <script type="module" src="{{url_for('static',filename='/js/components/InputItem.js')}}"></script>
-  <script type="module" src="{{url_for('static',filename='/js/components/BaseListInput.js')}}"></script>
-  <script type="module" src="{{url_for('static',filename='/js/components/ListRadioInput.js')}}"></script>
-  <script type="module" src="{{url_for('static',filename='/js/components/ListCheckBoxInput.js')}}"></script>
-  <script type="module" src="{{url_for('static',filename='/js/components/TextAreaInput.js')}}"></script>
-  <script type="module" src="{{url_for('static',filename='/js/components/QuestionEditor.js')}}"></script>
-  <script type="module" src="{{url_for('static',filename='/js/generateEvaluation.js')}}"></script>
-  <script type="module" src="{{url_for('static',filename='/js/customElements.js')}}"></script>
-  <script type="module" src="{{url_for('static',filename='/js/elements.js')}}"></script>
-  <script type="module" src="{{url_for('static',filename='/js/main.js')}}"></script>
-</body>
+    <section id="dataEvaluation">
+      <input type="hidden" id="id" name="id" value="">
+      <input type="text" id="title" value="Titulo" placeholder="Titulo">
+    </section>
+    <section id="ListQuestion">
+      <question-editor></question-editor>
+    </section>
+  </article>
+  <article id="container-btn">
+    <button class="btn" id="btnSave" type="button">Guardar</button>
+    <button class="btn" id="btnAddQuestion" type="button">Agregar</button>
+  </article>
+</main>
+{% endblock content %}
 
-</html>
+{% block scripts %}
+<script type="module" src="{{url_for('static',filename='/js/context/contextListQuestion.js')}}"></script>
+<script type="module" src="{{url_for('static',filename='/js/components/InputItem.js')}}"></script>
+<script type="module" src="{{url_for('static',filename='/js/components/BaseListInput.js')}}"></script>
+<script type="module" src="{{url_for('static',filename='/js/components/ListRadioInput.js')}}"></script>
+<script type="module" src="{{url_for('static',filename='/js/components/ListCheckBoxInput.js')}}"></script>
+<script type="module" src="{{url_for('static',filename='/js/components/TextAreaInput.js')}}"></script>
+<script type="module" src="{{url_for('static',filename='/js/components/QuestionEditor.js')}}"></script>
+<script type="module" src="{{url_for('static',filename='/js/generateEvaluation.js')}}"></script>
+<script type="module" src="{{url_for('static',filename='/js/customElements.js')}}"></script>
+<script type="module" src="{{url_for('static',filename='/js/elements.js')}}"></script>
+<script type="module" src="{{url_for('static',filename='/js/main.js')}}"></script>
+{% endblock scripts %}
