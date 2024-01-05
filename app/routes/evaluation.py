@@ -1,6 +1,7 @@
 from flask import Blueprint, render_template, request, redirect, url_for, flash
 from flask_login import login_required, current_user
 from app.services.teacher import get_all_teachers
+from app.config import Config
 
 evaluation_bp = Blueprint('EvaluationRoute', __name__,
                           url_prefix='/evaluation')
@@ -20,14 +21,18 @@ def get_add_evaluation():
     res, error = get_all_teachers(access_token)
 
     if error is not None:
-        print(error)
         flash(error, 'danger')
-        return redirect(url_for('EvaluationRoute.get__evaluation'))
+
+        if error == 'Token has expired':
+            return redirect(url_for('AuthRoute.get_logout'))
+
+        return redirect(url_for('EvaluationRoute.get_evaluation'))
 
     teachers = res.json()['result']
 
     context = {
-        'teachers': teachers
+        'teachers': teachers,
+        'URL_API': Config.URL_API
     }
 
     return render_template('evaluation_add.jinja', **context)

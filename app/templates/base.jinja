@@ -18,9 +18,7 @@
     {% block content %}
     {% endblock content %}
     {% block scripts %}
-    <script type="module">
-        console.log(document.cookie);
-    </script>
+    <script type="module" src="{{url_for('static',filename='js/token.js')}}"></script>
     {% endblock scripts %}
 </body>
 

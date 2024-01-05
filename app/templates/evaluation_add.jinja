@@ -45,6 +45,8 @@ Evaluación docente
 {% endblock content %}
 
 {% block scripts %}
+{{ super() }}
+<script type="module" src="{{url_for('static',filename='/js/services/evaluation.js')}}"></script>
 <script type="module" src="{{url_for('static',filename='/js/context/contextListQuestion.js')}}"></script>
 <script type="module" src="{{url_for('static',filename='/js/components/InputItem.js')}}"></script>
 <script type="module" src="{{url_for('static',filename='/js/components/BaseListInput.js')}}"></script>

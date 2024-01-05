@@ -2,6 +2,7 @@ import { ContextListQuestion } from "./context/contextListQuestion.js";
 import { QuestionEditor } from "./components/QuestionEditor.js";
 import { generateEvaluation, evaluation_json } from "./generateEvaluation.js";
 import { id, selectIdTeacher } from "./elements.js";
+import { addEvaluation } from "./services/evaluation.js";
 
 import {
   titleValue,
@@ -40,4 +41,5 @@ btnSave.addEventListener("click", () => {
   };
 
   console.log(evaluation);
+  addEvaluation(evaluation);
 });
