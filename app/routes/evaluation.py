@@ -9,3 +9,9 @@ evaluation_bp = Blueprint('EvaluationRoute', __name__,
 @login_required
 def get_evaluation():
     return render_template('evaluation.jinja')
+
+
+@evaluation_bp.get('/add')
+@login_required
+def get_add_evaluation():
+    return render_template('evaluation_add.jinja')

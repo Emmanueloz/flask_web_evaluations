@@ -1,0 +1,24 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.btn{
+    box-shadow: 4px 4px 8px #92abe2;
+    border: 0px;
+    border-radius: 5px;
+    padding: 5px;
+    font-size: 13pt;
+    font-weight: bold;
+}
+
+.btn-sm{
+  box-shadow: 4px 4px 8px #92abe2;
+  border: 0px;
+  border-radius: 5px;
+  padding: 5px;
+  font-size: 10pt;
+  font-weight: bold;
+}

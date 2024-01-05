@@ -1,0 +1,10 @@
+textarea{
+    width: 98%;
+    resize: none;
+}
+
+.btn-section-button{
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 5px;
+}

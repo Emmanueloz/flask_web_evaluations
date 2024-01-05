@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Evaluación docente</title>
+  <link rel="stylesheet" href="{{url_for('static',filename='/css/Global.css')}}">
+  <link rel="stylesheet" href="{{url_for('static',filename='/css/style.css')}}" />
+</head>
+
+<body>
+  <header>
+    <h1>Editor evaluaciones docentes</h1>
+  </header>
+  <main>
+    <article id="questionArticle">
+
+      <section id="dataEvaluation">
+        <input type="hidden" id="id" name="id" value="">
+        <input type="text" id="title" value="Titulo" placeholder="Titulo">
+      </section>
+      <section id="ListQuestion">
+        <question-editor></question-editor>
+      </section>
+    </article>
+    <article id="container-btn">
+      <button class="btn" id="btnSave" type="button">Guardar</button>
+      <button class="btn" id="btnAddQuestion" type="button">Agregar</button>
+    </article>
+  </main>
+
+  <script type="module" src="{{url_for('static',filename='/js/context/contextListQuestion.js')}}"></script>
+  <script type="module" src="{{url_for('static',filename='/js/components/InputItem.js')}}"></script>
+  <script type="module" src="{{url_for('static',filename='/js/components/BaseListInput.js')}}"></script>
+  <script type="module" src="{{url_for('static',filename='/js/components/ListRadioInput.js')}}"></script>
+  <script type="module" src="{{url_for('static',filename='/js/components/ListCheckBoxInput.js')}}"></script>
+  <script type="module" src="{{url_for('static',filename='/js/components/TextAreaInput.js')}}"></script>
+  <script type="module" src="{{url_for('static',filename='/js/components/QuestionEditor.js')}}"></script>
+  <script type="module" src="{{url_for('static',filename='/js/generateEvaluation.js')}}"></script>
+  <script type="module" src="{{url_for('static',filename='/js/customElements.js')}}"></script>
+  <script type="module" src="{{url_for('static',filename='/js/elements.js')}}"></script>
+  <script type="module" src="{{url_for('static',filename='/js/main.js')}}"></script>
+</body>
+
+</html>
