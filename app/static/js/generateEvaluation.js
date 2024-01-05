@@ -11,7 +11,7 @@ import { QuestionEditor } from "./components/QuestionEditor.js";
   lengthAnswers: 300,
 },
  */
-export const evaluation = {
+export const evaluation_json = {
   title: "Titulo",
   questions: [],
 };

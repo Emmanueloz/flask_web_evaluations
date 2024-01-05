@@ -1,7 +1,7 @@
 import { ContextListQuestion } from "./context/contextListQuestion.js";
 import { QuestionEditor } from "./components/QuestionEditor.js";
-import { generateEvaluation, evaluation } from "./generateEvaluation.js";
-import { id } from "./elements.js";
+import { generateEvaluation, evaluation_json } from "./generateEvaluation.js";
+import { id, selectIdTeacher } from "./elements.js";
 
 import {
   titleValue,
@@ -23,16 +23,21 @@ btnAddQuestion.addEventListener("click", () => {
 
 // botón de lógica para guardar los datos
 btnSave.addEventListener("click", () => {
-  evaluation.questions = [];
+  evaluation_json.questions = [];
   for (const [key, value] of Object.entries(listQuestion.children)) {
     if (value.id === "dataEvaluation") {
       continue;
     }
     const objectQuestion = value.dataQuestion();
     objectQuestion.id = key;
-    evaluation.title = titleValue.value;
-    evaluation.questions.push(objectQuestion);
+    evaluation_json.title = titleValue.value;
+    evaluation_json.questions.push(objectQuestion);
   }
+
+  const evaluation = {
+    id_teacher: selectIdTeacher.value,
+    evaluation_json,
+  };
 
   console.log(evaluation);
 });

@@ -22,6 +22,16 @@ Evaluación docente
     <section id="dataEvaluation">
       <input type="hidden" id="id" name="id" value="">
       <input type="text" id="title" value="Titulo" placeholder="Titulo">
+      <label for="id_teacher">
+        <span class="label_teacher">Seleccione un docente</span>
+        <select name="id_teacher" id="id_teacher">
+          {% if teachers %}
+          {% for teacher in teachers %}
+          <option value="{{teacher.id}}">{{teacher.name}}</option>
+          {% endfor %}
+          {% endif %}
+        </select>
+      </label>
     </section>
     <section id="ListQuestion">
       <question-editor></question-editor>
