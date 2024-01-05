@@ -99,8 +99,8 @@ export class QuestionEditor extends HTMLElement {
   connectedCallback() {
     this.shadowRoot.innerHTML = /* html */ `
         <style>
-          @import "../../css/Global.css";
-          @import "../../css/QuestionEditor.css";
+          @import "/static/css/Global.css";
+          @import "/static/css/QuestionEditor.css";
         </style>
         <article>
           <div>

@@ -31,8 +31,8 @@ export class InputItem extends HTMLElement {
   connectedCallback() {
     this.shadowRoot.innerHTML = /* html */ `
     <style>
-      @import "../../css/Global.css";
-      @import "../../css/InputItem.css";
+      @import "/static/css/Global.css";
+      @import "/static/css/InputItem.css";
     </style>
     <li>
         <input type="${this.typeInput}" disabled>

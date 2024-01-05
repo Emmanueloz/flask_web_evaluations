@@ -5,6 +5,11 @@
 Evaluación docente
 {% endblock title %}
 
+{% block styles %}
+<link rel="stylesheet" href="{{url_for('static',filename='/css/Global.css')}}">
+<link rel="stylesheet" href="{{url_for('static',filename='/css/evaluation.css')}}" />
+{% endblock styles %}
+
 {% block header %}
 {{ super() }}
 {{ navbar(current_user,"") }}

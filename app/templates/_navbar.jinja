@@ -2,7 +2,9 @@
 <nav>
     <ul>
         {% if current_user.is_authenticated %}
-        <li class="{% if page == 'home' %}active{% endif %}">Welcome, {{ current_user.id | capitalize }}</li>
+        <li class="{% if page == 'home' %}active{% endif %}">
+            <a href="{{url_for('IndexRoute.index')}}">Welcome, {{ current_user.id | capitalize }}</a>
+        </li>
         <li class="{% if page == 'evaluation' %}active{% endif %}"><a
                 href="{{url_for('EvaluationRoute.get_evaluation')}}">Evaluation</a></li>
         <li class="{% if page == 'home' %}active{% endif %}"><a href="{{url_for('AuthRoute.get_logout')}}">Logout</a>
