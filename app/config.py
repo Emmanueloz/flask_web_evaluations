@@ -1,2 +1,8 @@
+from dotenv import load_dotenv
+import os
+load_dotenv()
+
+
 class Config:
-    SECRET_KEY = 'secret key'
+    SECRET_KEY = os.environ.get('SECRET_KEY')
+    URL_API = os.environ.get('URL_API')
