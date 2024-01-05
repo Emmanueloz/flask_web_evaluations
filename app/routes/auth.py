@@ -1,5 +1,6 @@
-from flask import Blueprint, request, render_template, redirect, url_for, flash
-from app.models import UserLogin
+from flask import Blueprint, render_template, redirect, url_for, flash, make_response, session
+from flask_login import login_user, logout_user
+from app.models import UserLogin, UserModel
 from app.services.auth import post_login_api
 
 auth_bp = Blueprint('AuthRoute', __name__)
@@ -21,13 +22,28 @@ def post_login():
         return redirect(url_for('AuthRoute.get_login'))
 
     response, error = post_login_api(user_form.data)
+
     if error is not None:
         print(error)
         flash(error)
-        return redirect(url_for('AuthRoute.get_login')), response.status_code
+        return redirect(url_for('AuthRoute.get_login'))
 
-    print(response)
-    return redirect(url_for('AuthRoute.get_login'))
+    data = response.json()
+
+    res = data["response"]
+    access_token = res["access_token"]
+    user = res["user"]
+
+    session["user"] = user
+    print(user)
+    user = UserModel(user)
+    login_user(user)
+
+    response = make_response(redirect(url_for('IndexRoute.index')))
+
+    response.set_cookie('access_token', access_token)
+
+    return response
 
 
 @auth_bp.get('/logout')
