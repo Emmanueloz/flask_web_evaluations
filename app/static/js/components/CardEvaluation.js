@@ -18,9 +18,14 @@ export class CardEvaluation extends HTMLElement {
                 /* Add your custom styles here */
             </style>
             <div class="card">
-                <h2>${title}</h2>
-                <p>ID: ${id}</p>
-                <p>Teacher: ${teacher}</p>
+                <a href="/evaluation/edit/${id}">
+                  <h2>${title}</h2>
+                  <p>ID: ${id}</p>
+                  <div>
+                    <p>Teacher: ${teacher?.name}</p>
+                    <p>Subject: ${teacher?.subject}</p>
+                  </div>
+                </a>
             </div>
         `;
   }

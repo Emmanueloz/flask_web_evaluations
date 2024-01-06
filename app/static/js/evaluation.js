@@ -13,7 +13,7 @@ getAllEvaluation()
 
         data.result.forEach((evaluation) => {
           // crear un elemento HTML
-          console.log(evaluation);
+          console.log(evaluation.teacher);
           const cardEvaluation = new CardEvaluation();
           cardEvaluation.id = evaluation.id;
           cardEvaluation.title = evaluation.title;

@@ -1,5 +1,5 @@
 {% extends "base.jinja" %}
-{% from "_navbar.jinja" import navbar %}
+{% from "macros/_navbar.jinja" import navbar %}
 
 {% block title %}
 Evaluación docente
@@ -20,7 +20,7 @@ Evaluación docente
   <article id="questionArticle">
 
     <section id="dataEvaluation">
-      <input type="hidden" id="id" name="id" value="">
+      <input type="hidden" id="id" name="id" value="{{id}}">
       <input type="text" id="title" value="Titulo" placeholder="Titulo">
       <label for="id_teacher">
         <span class="label_teacher">Seleccione un docente</span>
