@@ -24,6 +24,7 @@ if (id.value !== "") {
 
       const evaluation = data.result;
       console.log(evaluation);
+      btnSave.textContent = "Editar";
       generateEvaluation(evaluation);
     })
     .catch((error) => console.error(error));

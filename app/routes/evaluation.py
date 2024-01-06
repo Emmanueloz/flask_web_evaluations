@@ -1,6 +1,7 @@
 from flask import Blueprint, render_template, request, redirect, url_for, flash
 from flask_login import login_required, current_user
 from app.services.teacher import get_all_teachers
+from app.services.evaluation import delete_evaluation
 from app.config import Config
 
 evaluation_bp = Blueprint('EvaluationRoute', __name__,
@@ -60,3 +61,22 @@ def get_edit_evaluation(id):
         'URL_API': Config.URL_API
     }
     return render_template('evaluation_add_edit.jinja', **context)
+
+
+@evaluation_bp.get('/delete/<id>')
+@login_required
+def get_detail_evaluation(id):
+    access_token = request.cookies.get('access_token')
+    res, error = delete_evaluation(access_token, id)
+
+    if error is not None:
+        flash(error, 'danger')
+
+        if error == 'Token has expired':
+            return redirect(url_for('AuthRoute.get_logout'))
+
+        return redirect(url_for('EvaluationRoute.get_evaluation'))
+
+    print(res.json())
+    flash("Evaluación eliminado correctamente", 'success')
+    return redirect(url_for('EvaluationRoute.get_evaluation'))
