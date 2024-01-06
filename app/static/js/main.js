@@ -2,7 +2,11 @@ import { ContextListQuestion } from "./context/contextListQuestion.js";
 import { QuestionEditor } from "./components/QuestionEditor.js";
 import { generateEvaluation, evaluation_json } from "./generateEvaluation.js";
 import { id, selectIdTeacher } from "./elements.js";
-import { addEvaluation, getAllEvaluation } from "./services/evaluation.js";
+import {
+  addEvaluation,
+  getEvaluation,
+  updateEvaluation,
+} from "./services/evaluation.js";
 
 import {
   titleValue,
@@ -12,7 +16,18 @@ import {
 } from "./elements.js";
 
 if (id.value !== "") {
-  generateEvaluation(evaluation);
+  getEvaluation(id.value)
+    .then((data) => {
+      if (!data.result) {
+        throw new Error("Network response was not ok");
+      }
+
+      const evaluation = data.result;
+      console.log(evaluation);
+      generateEvaluation(evaluation);
+    })
+    .catch((error) => console.error(error));
+
   console.log("editar");
 }
 // Evento para agregar un nuevo editor de pregunta
@@ -22,8 +37,7 @@ btnAddQuestion.addEventListener("click", () => {
   listQuestion.append(question);
 });
 
-// botón de lógica para guardar los datos
-btnSave.addEventListener("click", () => {
+const saveEvaluation = () => {
   evaluation_json.questions = [];
   for (const [key, value] of Object.entries(listQuestion.children)) {
     if (value.id === "dataEvaluation") {
@@ -41,5 +55,31 @@ btnSave.addEventListener("click", () => {
   };
 
   console.log(JSON.stringify(evaluation));
-  addEvaluation(evaluation);
+  if (id.value !== "") {
+    evaluation.id = id.value;
+    console.log("editar");
+    updateEvaluation(evaluation)
+      .then((data) => {
+        console.log(data); // Puedes manejar la respuesta aquí
+        document.location.href = "/evaluation";
+      })
+      .catch((error) => {
+        console.error(
+          "There has been a problem with your fetch operation:",
+          error
+        );
+      });
+    return;
+  }
+  addEvaluation(evaluation)
+    .then((data) => {
+      console.log(data.result);
+      document.location.href = "/evaluation";
+    })
+    .catch((error) => console.error(error));
+};
+
+// botón de lógica para guardar los datos
+btnSave.addEventListener("click", () => {
+  saveEvaluation();
 });
