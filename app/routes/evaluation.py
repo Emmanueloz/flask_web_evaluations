@@ -77,6 +77,9 @@ def get_detail_evaluation(id):
 
         return redirect(url_for('EvaluationRoute.get_evaluation'))
 
-    print(res.json())
+    if res.json()['status'] != 'ok':
+        flash(res.json()['msg'], 'danger')
+        return redirect(url_for('EvaluationRoute.get_evaluation'))
+
     flash("Evaluación eliminado correctamente", 'success')
     return redirect(url_for('EvaluationRoute.get_evaluation'))

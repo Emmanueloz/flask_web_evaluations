@@ -1,6 +1,6 @@
 import { getAllEvaluation } from "./services/evaluation.js";
 import { CardEvaluation } from "./components/CardEvaluation.js";
-
+customElements.define("card-evaluation", CardEvaluation);
 const containerEvaluation = document.getElementById("containerEvaluation");
 
 getAllEvaluation()
@@ -13,11 +13,11 @@ getAllEvaluation()
 
         data.result.forEach((evaluation) => {
           // crear un elemento HTML
-          console.log(evaluation.teacher);
-          const cardEvaluation = new CardEvaluation();
-          cardEvaluation.id = evaluation.id;
-          cardEvaluation.title = evaluation.title;
-          cardEvaluation.teacher = evaluation.teacher;
+          const cardEvaluation = new CardEvaluation(
+            evaluation.title,
+            evaluation.teacher,
+            evaluation.id
+          );
           containerEvaluation.appendChild(cardEvaluation);
         });
       }

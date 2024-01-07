@@ -1,6 +1,9 @@
 export class CardEvaluation extends HTMLElement {
-  constructor() {
+  constructor(title, teacher, id) {
     super();
+    this.title = title;
+    this.teacher = teacher;
+    this.id = id;
     this.attachShadow({ mode: "open" });
   }
 
@@ -9,24 +12,20 @@ export class CardEvaluation extends HTMLElement {
   }
 
   render() {
-    const title = this.getAttribute("title");
-    const id = this.getAttribute("id");
-    const teacher = this.getAttribute("teacher");
-
     this.shadowRoot.innerHTML = /*html*/ `
             <style>
                 /* Add your custom styles here */
             </style>
             <div class="card">
-                <a href="/evaluation/edit/${id}">
-                  <h2>${title}</h2>  
+                <a href="/evaluation/edit/${this.id}">
+                  <h2>${this.title}</h2>  
                 </a>
                 <div>
-                  <p>Teacher: ${teacher?.name}</p>
-                  <p>Subject: ${teacher?.subject}</p>
+                  <p>Teacher: ${this.teacher?.name}</p>
+                  <p>Subject: ${this.teacher?.subject}</p>
                 </div>
                 <div>
-                  <a href="/evaluation/delete/${id}">
+                  <a href="/evaluation/delete/${this.id}">
                     Eliminar
                   </a>
                 </div>

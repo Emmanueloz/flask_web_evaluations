@@ -11,6 +11,14 @@ Welcome to the home page
 {% endblock header %}
 
 {% block content %}
-<h1>Home</h1>
-<p class="lead">Welcome to the home page.</p>
+<h1>Maestros</h1>
+<a href="">Agregar</a>
+<section id="containerTeacher"> </section>
 {% endblock %}
+
+{% block scripts %}
+{{ super() }}
+{{ super() }}
+<script type="module" src="{{url_for('static', filename='js/services/teacher.js')}}"></script>
+<script type="module" src="{{url_for('static', filename='js/teacher.js')}}"></script>
+{% endblock scripts %}
