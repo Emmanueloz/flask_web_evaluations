@@ -1,0 +1,24 @@
+{% extends "base.jinja" %}
+{% from "macros/_navbar.jinja" import navbar %}
+
+{% block title %}
+Welcome to the home page
+{% endblock title %}
+
+{% block header %}
+{{ super() }}
+{{ navbar(current_user,"home") }}
+{% endblock header %}
+
+{% block content %}
+<h1>Maestros</h1>
+<a href="">Agregar</a>
+<section id="containerTeacher"> </section>
+{% endblock %}
+
+{% block scripts %}
+{{ super() }}
+{{ super() }}
+<script type="module" src="{{url_for('static', filename='js/services/teacher.js')}}"></script>
+<script type="module" src="{{url_for('static', filename='js/teacher.js')}}"></script>
+{% endblock scripts %}

@@ -2,6 +2,8 @@
 from .auth import auth_bp
 from .evaluation import evaluation_bp
 
+from .teacher import teacher_bp
+
 from flask import Blueprint, render_template
 from flask_login import login_required
 

@@ -5,8 +5,12 @@
         <li class="{% if page == 'home' %}active{% endif %}">
             <a href="{{url_for('IndexRoute.index')}}">Welcome, {{ current_user.id | capitalize }}</a>
         </li>
+        <li class="{% if page == 'teacher' %}active{% endif %}"><a
+                href="{{url_for('TeacherRoute.get_teacher')}}">Maestros</a></li>
+
         <li class="{% if page == 'evaluation' %}active{% endif %}"><a
                 href="{{url_for('EvaluationRoute.get_evaluation')}}">Evaluation</a></li>
+
         <li class="{% if page == 'home' %}active{% endif %}"><a href="{{url_for('AuthRoute.get_logout')}}">Logout</a>
         </li>
         {% else %}

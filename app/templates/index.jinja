@@ -1,24 +1,16 @@
 {% extends "base.jinja" %}
-{% from "macros/_navbar.jinja" import navbar %}
-
-{% block title %}
-Welcome to the home page
-{% endblock title %}
+{% from"macros/_navbar.jinja" import navbar %}
 
 {% block header %}
-{{ super() }}
-{{ navbar(current_user,"home") }}
+{{navbar(current_user,"home")}}
 {% endblock header %}
 
 {% block content %}
-<h1>Maestros</h1>
-<a href="">Agregar</a>
-<section id="containerTeacher"> </section>
-{% endblock %}
 
-{% block scripts %}
-{{ super() }}
-{{ super() }}
-<script type="module" src="{{url_for('static', filename='js/services/teacher.js')}}"></script>
-<script type="module" src="{{url_for('static', filename='js/teacher.js')}}"></script>
-{% endblock scripts %}
+<h1>Dashboard</h1>
+
+<a href="{{url_for('EvaluationRoute.get_evaluation')}}">Lista de Evaluaciones</a>
+<hr>
+<a href="{{url_for('TeacherRoute.get_teacher')}}">Lista de Maestros</a>
+
+{% endblock content %}

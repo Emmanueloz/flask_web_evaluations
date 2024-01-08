@@ -19,4 +19,7 @@ def create_app():
     from .routes import evaluation_bp
     app.register_blueprint(evaluation_bp)
 
+    from .routes import teacher_bp
+    app.register_blueprint(teacher_bp)
+
     return app
