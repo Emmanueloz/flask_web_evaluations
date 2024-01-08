@@ -1,8 +1,53 @@
-{% extends "base.html" %}
+{% extends "base.jinja" %}
+{% from "macros/_navbar.jinja" import navbar %}
 
-{% block title %}{{action}} maestros{% endblock title %}
+{% block title %}{{action | capitalize}} maestros{% endblock title %}
+
+
+{% block header %}
+{{ super() }}
+{{ navbar(current_user,"teacher") }}
+{% endblock header %}
 
 {% block content %}
 <h1>{{ action | capitalize }}</h1>
-<form action=""></form>
+<section>
+    {% if form.name.errors %}
+    <ul class="errors">
+        {% for error in form.name.errors %}
+        <li>{{ error }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+</section>
+{% if teacher %}
+<form action="" method="post">
+    {{form.csrf_token}}
+    <fieldset>
+        <legend>{{form.name.label}}</legend>
+        {{form.name(value=teacher.name)}}
+    </fieldset>
+    <fieldset>
+        <legend>{{form.subject.label}}</legend>
+        {{form.subject(value=teacher.subject)}}
+    </fieldset>
+
+    <button type="submit">Enviar</button>
+</form>
+{% else %}
+<form action="" method="post">
+    {{form.csrf_token}}
+    <fieldset>
+        <legend>{{form.name.label}}</legend>
+        {{form.name}}
+    </fieldset>
+    <fieldset>
+        <legend>{{form.subject.label}}</legend>
+        {{form.subject}}
+    </fieldset>
+
+    <button type="submit">Enviar</button>
+</form>
+{% endif %}
+
 {% endblock content %}
